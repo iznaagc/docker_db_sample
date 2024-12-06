@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+メール送信に関するコード、IDの設定ファイル
+-->
+<component-configuration
+    xmlns="http://tis.co.jp/nablarch/component-configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
+
+    <component name="mailConfig" class="nablarch.common.mail.MailConfig">
+        <property name="mailRequestSbnId" value="${nablarch.mailConfig.mailRequestSbnId}" />
+        <property name="recipientTypeTO" value="0" />
+        <property name="recipientTypeCC" value="1" />
+        <property name="recipientTypeBCC" value="2" />
+        <property name="statusUnsent" value="0" />
+        <property name="statusSent" value="1" />
+        <property name="statusFailure" value="2" />
+        <property name="sendSuccessMessageId" value="${nablarch.mailConfig.sendSuccessMessageId}" />
+        <property name="sendFailureCode" value="${nablarch.mailConfig.sendFailureCode}" />
+        <property name="mailRequestCountMessageId" value="${nablarch.mailConfig.mailRequestCountMessageId}" />
+        <property name="abnormalEndExitCode" value="199" />
+    </component>
+
+</component-configuration>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- リトライ機能の設定 -->
+<component-configuration
+        xmlns="http://tis.co.jp/nablarch/component-configuration"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration  https://nablarch.github.io/schema/component-configuration.xsd">
+
+  <!-- リトライハンドラ -->
+  <component name="retryHandler" class="nablarch.fw.handler.RetryHandler">
+    <property name="retryContextFactory">
+      <!-- 指定回数を超過するリトライが発生した場合はバッチを停止する。 -->
+      <component class="nablarch.fw.handler.retry.CountingRetryContextFactory">
+        <property name="maxRetryTime" value="${nablarch.retryHandler.maxRetryTime}"/>
+        <property name="retryCount" value="${nablarch.retryHandler.retryCount}"/>
+        <property name="retryIntervals" value="${nablarch.retryHandler.retryIntervals}"/>
+      </component>
+    </property>
+
+    <!-- リトライ時に強制的にデータリーダを破棄するか -->
+    <property name="destroyReader" value="${nablarch.retryHandler.destroyReader}" />
+  </component>
+
+</component-configuration>

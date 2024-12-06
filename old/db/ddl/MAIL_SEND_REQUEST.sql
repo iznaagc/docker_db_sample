@@ -1,0 +1,15 @@
+drop table if exists MAIL_SEND_REQUEST;
+create table MAIL_SEND_REQUEST (
+  MAIL_SEND_REQUEST_CODE CHAR(18) not null
+  , MAIL_SEND_PATTERN CHAR(3) not null
+  , MAIL_SUBJECT VARCHAR(100) not null
+  , FROM_MAILADDRESS VARCHAR(255) not null
+  , REPLY_MAILADDRESS VARCHAR(255) not null
+  , RETURN_MAILADDRESS VARCHAR(255) not null
+  , CHARSET CHAR(20) not null
+  , MAIL_SEND_STATUS CHAR(1) not null
+  , SEND_REQUEST_DATE TIMESTAMP not null
+  , SEND_DATE TIMESTAMP not null
+  , MAIL_BODY TEXT not null
+  , constraint MAIL_SEND_REQUEST_PKC primary key (MAIL_SEND_REQUEST_CODE)
+);

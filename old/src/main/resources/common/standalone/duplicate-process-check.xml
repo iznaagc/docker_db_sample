@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 2重起動防止機能の設定 -->
+<component-configuration
+        xmlns="http://tis.co.jp/nablarch/component-configuration"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
+
+  <component name="duplicateProcessChecker" class="nablarch.fw.handler.BasicDuplicateProcessChecker">
+    <property name="tableName" value="${nablarch.batchRequestTable.name}"/>
+    <property name="processIdentifierColumnName" value="${nablarch.batchRequestTable.requestIdColumnName}"/>
+    <property name="processActiveFlgColumnName" value="${nablarch.batchRequestTable.processActiveFlgColumnName}"/>
+    <property name="dbTransactionManager">
+      <component class="nablarch.core.db.transaction.SimpleDbTransactionManager">
+        <property name="dbTransactionName" value="DuplicateProcessCheckHandler"/>
+        <!-- トランザクションファクトリ -->
+        <property name="transactionFactory" ref="transactionFactory"/>
+        <!-- コネクションファクトリ -->
+        <property name="connectionFactory" ref="connectionFactory"/>
+      </component>
+    </property>
+  </component>
+
+  <!-- 2重起動チェックハンドラ -->
+  <component name="duplicateProcessCheckHandler"
+             class="nablarch.fw.handler.DuplicateProcessCheckHandler">
+
+    <property name="duplicateProcessChecker" ref="duplicateProcessChecker" />
+
+  </component>
+</component-configuration>

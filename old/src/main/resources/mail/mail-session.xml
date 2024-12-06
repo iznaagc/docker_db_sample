@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+メール送信用設定ファイル
+-->
+<component-configuration
+        xmlns="http://tis.co.jp/nablarch/component-configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
+
+  <!-- セッション情報 -->
+  <component name="mailSessionConfig" class="nablarch.common.mail.MailSessionConfig">
+    <property name="mailSmtpHost" value="${nablarch.mailSessionConfig.mailSmtpHost}"/>
+    <property name="mailHost" value="${nablarch.mailSessionConfig.mailHost}"/>
+    <property name="mailSmtpPort" value="${nablarch.mailSessionConfig.mailSmtpPort}"/>
+    <property name="mailSmtpConnectionTimeout" value="${nablarch.mailSessionConfig.mailSmtpConnectionTimeout}"/>
+    <property name="mailSmtpTimeout" value="${nablarch.mailSessionConfig.mailSmtpTimeout}"/>
+  </component>
+
+</component-configuration>

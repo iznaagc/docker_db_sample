@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 周期起動型常駐バッチの設定 -->
+<component-configuration
+    xmlns="http://tis.co.jp/nablarch/component-configuration"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
+
+  <!-- プロセス常駐化ハンドラ -->
+  <component name="processResidentHandler" class="nablarch.fw.handler.ProcessResidentHandler">
+    <property name="dataWatchInterval" value="${nablarch.processResidentHandler.dataWatchInterval}" />
+  </component>
+
+</component-configuration>

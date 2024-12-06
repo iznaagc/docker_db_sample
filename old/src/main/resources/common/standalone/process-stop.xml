@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- プロセス停止機能の設定 -->
+<component-configuration
+        xmlns="http://tis.co.jp/nablarch/component-configuration"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
+
+
+  <!-- プロセス停止ハンドラ -->
+  <component name="processStopHandler" class="nablarch.fw.handler.BasicProcessStopHandler">
+    <property name="checkInterval" value="${nablarch.processStopHandler.checkInterval}"/>
+    <property name="dbTransactionManager">
+      <component class="nablarch.core.db.transaction.SimpleDbTransactionManager">
+        <property name="dbTransactionName" value="processStopHandler"/>
+        <!-- トランザクションファクトリ -->
+        <property name="transactionFactory" ref="transactionFactory"/>
+        <!-- コネクションファクトリ -->
+        <property name="connectionFactory" ref="connectionFactory"/>
+      </component>
+    </property>
+    <property name="tableName" value="${nablarch.batchRequestTable.name}"/>
+    <property name="requestIdColumnName" value="${nablarch.batchRequestTable.requestIdColumnName}"/>
+    <property name="processHaltColumnName" value="${nablarch.batchRequestTable.processHaltColumnName}"/>
+    <property name="exitCode" value="50"/>
+  </component>
+
+</component-configuration>

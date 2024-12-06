@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  # db:
+  #   build:
+  #     context: .
+  #     dockerfile: ./db/dockerfile
+  #   container_name: psg_pg16
+  #   command: -c 'config_file=/etc/postgresql/postgresql.conf' # 追加
+  #   volumes:
+  #     # - db-store:/var/lib/postgresql/data
+  #     # - ./script:/docker-entrypoint-initdb.d
+  #     - ./db/postgresql.conf:/etc/postgresql/postgresql.conf # 追加
+  #   env_file:
+  #     - ./db/.env-dev
+  #   environment:
+  #     - TZ=Asia/Tokyo
+  #   ports:
+  #     - 5444:5444
+
+  #   volumes: # 名前付きボリュームの割り当て定義を追加
+  #     - db-data:/var/lib/postgresql/data
+  #   networks:
+  #     - app-network
+  app:
+    tty: true
+    command: /bin/bash
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: my-java17-tomcat-quartz-app
+    environment:
+      - TZ=Asia/Tokyo
+    # networks:
+    #   - app-network
+
+  # # SMTP Server
+  # smtp:
+  #   build:
+  #     context: .
+  #     dockerfile: ./smtp/Dockerfile
+  #   ports:
+  #     - "25:25"
+  #   container_name: smtp-mail-server
+  #   environment:
+  #     - TZ=Asia/Tokyo
+  #   networks:
+  #     - app-network
+# 名前付きボリュームの定義を追加
+# volumes:
+#   db-data:
+#     driver: local
+
+# networks:
+#   app-network:
+#     driver: bridge

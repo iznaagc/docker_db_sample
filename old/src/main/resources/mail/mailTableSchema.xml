@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component-configuration
+    xmlns="http://tis.co.jp/nablarch/component-configuration"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
+
+  <component name="mailRequestTable" class="nablarch.common.mail.MailRequestTable">
+    <peroperty name="tableName" value="MAIL_SEND_REQUEST" />
+    <peroperty name="mailRequestIdColumnName" value="MAIL_SEND_REQUEST_CODE" />
+    <peroperty name="mailSendPatternIdColumnName" value="MAIL_SEND_PATTERN" />
+    <peroperty name="subjectColumnName" value="MAIL_SUBJECT" />
+    <peroperty name="fromColumnName" value="FROM_MAILADDRESS" />
+    <peroperty name="replyToColumnName" value="REPLY_MAILADDRESS" />
+    <peroperty name="returnPathColumnName" value="RETRUN_MAILADDRESS" />
+    <peroperty name="charsetColumnName" value="CHARSET" />
+    <peroperty name="statusColumnName" value="MAIL_SEND_STATUS" />
+    <peroperty name="requestDateTimeColumnName" value="SEND_REQUEST_DATE" />
+    <peroperty name="sendDateTimeColumnName" value="SEND_DATE" />
+    <peroperty name="mailBodyColumnName" value="MAIL_BODY" />
+  </component>
+
+  <component name="mailRecipientTable" class="nablarch.common.mail.MailRecipientTable">
+    <peroperty name="tableName" value="MAIL_RECEIPENT" />
+    <peroperty name="mailRequestIdColumnName" value="MAIL_SEND_REQUEST_CODE" />
+    <peroperty name="serialNumberColumnName" value="SEQUENCE" />
+    <peroperty name="recipientTypeColumnName" value="RECIPIENT_TYPE" />
+    <peroperty name="mailAddressColumnName" value="MAILADDRESS" />
+  </component>
+
+  <component name="mailAttachedFileTable" class="nablarch.common.mail.MailAttachedFileTable">
+    <peroperty name="tableName" value="MAIL_ATTACHMENT_FILE" />
+    <peroperty name="mailRequestIdColumnName" value="MAIL_SEND_REQUEST_CODE" />
+    <peroperty name="serialNumberColumnName" value="SEQUENCE" />
+    <peroperty name="fileNameColumnName" value="FILE_TYPE" />
+    <peroperty name="contenTypeColumnName" value="CONTENT_TYPE" />
+    <peroperty name="fileColumnName" value="ATTACHMENT_FILE" />
+  </component>
+
+  <component name="mailTemplateTable" class="nablarch.common.mail.MailTemplateTable">
+    <peroperty name="tableName" value="MAIL_TEMPLATE" />
+    <peroperty name="mailTemplateColumnName" value="MAIL_TEMPLATE_CODE" />
+    <peroperty name="langColumnName" value="LANG" />
+    <peroperty name="subjectColumnName" value="MAIL_SUBJECT" />
+    <peroperty name="charsetColumnName" value="CHARSET" />
+    <peroperty name="mailBodyColumnName" value="MAIL_BODY" />
+
+  </component>
+
+</component-configuration>

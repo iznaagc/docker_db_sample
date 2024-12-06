@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+メール送信要求のデフォルト値の設定ファイル
+-->
+<component-configuration
+    xmlns="http://tis.co.jp/nablarch/component-configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
+
+    <!-- メール設定 -->
+    <component name="mailRequestConfig" class="nablarch.common.mail.MailRequestConfig">
+        <!-- デフォルトの返信先メールアドレス -->
+        <property name="defaultReplyTo" value="izumoto.works@gmail.com" />
+        <!-- デフォルトの差し戻し先メールアドレス -->
+        <property name="defaultReturnPath" value="izumoto.works@gmail.com" />
+        <!-- デフォルトの文字セット -->
+        <property name="defaultCharset" value="UTF-8" />
+        <!-- 最大宛先数 -->
+        <property name="maxRecipientCount" value="100" />
+        <!-- 最大添付ファイルサイズ -->
+        <property name="maxAttachedFileSize" value="2097152" />
+    </component>
+
+</component-configuration>

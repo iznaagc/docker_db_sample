@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- データベーストランザクション管理機能の設定 -->
+<component-configuration
+        xmlns="http://tis.co.jp/nablarch/component-configuration"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
+
+  <!-- データベース接続用設定 -->
+  <!-- 処理方式ごとに異なるため、別途読み込みが必要 -->
+
+  <!-- デフォルトのデータベーストランザクション管理クラスの設定 -->
+  <component name="defaultDbTransactionManager"
+             class="nablarch.core.db.transaction.SimpleDbTransactionManager">
+    <property name="connectionFactory" ref="connectionFactory"/>
+    <property name="transactionFactory" ref="transactionFactory"/>
+  </component>
+
+  <!-- データベーストランザクション用設定 -->
+  <component name="transactionFactory"
+             class="nablarch.core.db.transaction.JdbcTransactionFactory">
+    <property name="isolationLevel" value="${nablarch.transactionFactory.isolationLevel}" />
+    <property name="transactionTimeoutSec" value="${nablarch.transactionFactory.transactionTimeoutSec}" />
+  </component>
+
+  <!-- 透過的コネクション管理の設定 -->
+  <component name="dbConnectionManagementHandler"
+             class="nablarch.common.handler.DbConnectionManagementHandler">
+    <property name="connectionFactory" ref="connectionFactory" />
+  </component>
+
+  <!-- 透過的トランザクションの設定 -->
+  <component name="transactionManagementHandler"
+             class="nablarch.common.handler.TransactionManagementHandler">
+    <property name="transactionFactory" ref="transactionFactory" />
+  </component>
+
+</component-configuration>

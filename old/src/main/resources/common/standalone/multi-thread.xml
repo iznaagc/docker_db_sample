@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- マルチスレッド実行制御機能の設定 -->
+<component-configuration
+    xmlns="http://tis.co.jp/nablarch/component-configuration"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
+
+  <import file="common/standalone/commit-log.xml" />
+
+  <!-- マルチスレッド実行制御ハンドラ -->
+  <component name="multiThreadExecutionHandler" class="nablarch.fw.handler.MultiThreadExecutionHandler">
+    <property name="concurrentNumber" value="${nablarch.multiThreadExecutionHandler.threadCount}" />
+    <property name="commitLogger" ref="commitLogger" />
+  </component>
+
+</component-configuration>

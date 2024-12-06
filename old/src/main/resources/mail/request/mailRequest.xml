@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+メール送信要求APIの設定ファイル
+-->
+<component-configuration
+    xmlns="http://tis.co.jp/nablarch/component-configuration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://tis.co.jp/nablarch/component-configuration https://nablarch.github.io/schema/component-configuration.xsd">
+
+    <!-- メール関連テーブルスキーマ情報の定義ファイル -->
+    <import file="mail/mail-table-schema.xml" />
+    <!-- 出力ライブラリ（メール送信）のコード値・メッセージIDの設定 -->
+    <import file="mail/mail-config.xml" />
+    <!-- メール送信設定値の読み込み -->
+    <import file="mail/request/mail-request-config.xml" />
+
+    <!-- メール送信要求API -->
+    <component name="mailRequester" class="nablarch.common.mail.MailRequester">
+        <property name="mailRequestConfig" ref="mailRequestConfig" />
+        <property name="mailRequestIdGenerator" ref="idGenerator" />
+        <property name="mailRequestTable" ref="mailRequestTable" />
+        <property name="mailRecipientTable" ref="mailRecipientTable" />
+        <property name="mailAttachedFileTable" ref="mailAttachedFileTable" />
+        <property name="templateEngineMailProcessor">
+            <component class="nablarch.common.mail.TinyTemplateEngineMailProcessor">
+                <property name="mailTemplateTable" ref="mailTemplateTable" />
+            </component>
+        </property>
+    </component>
+
+</component-configuration>
